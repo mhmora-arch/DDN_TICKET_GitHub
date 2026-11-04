@@ -1,0 +1,68 @@
+<?php
+	require_once "../../config/conexion.php"; // conexion.php ya contiene session_start()
+	if (!isset($_SESSION['user_id'])) {
+?>
+<!DOCTYPE html> //template Blank-Start UI//
+<html>
+	<?php require_once("../MainHead/head.php");?>
+    <title>DDN_Ticket - Consultar Ticket </title>
+</head>
+<body class="with-side-menu">
+
+    <?php require_once("../MainHeader/header.php");?>
+
+	<div class="mobile-menu-left-overlay"></div>
+
+	<?php require_once("../MainNav/nav.php");?>
+
+    <!-- Contenido de la página de consulta de tickets -->
+	<div class="page-content">
+		<div class="container-fluid">
+			<header class="seccion-header">
+			<div class="tbl">
+						<div class="tbl-row">
+							<div class="tbl-cell">
+								<h3>Consultar Ticket</h3>
+								<ol class="breadcrumb breadcrumb-simple">
+									<li><a href="#">Home</a></li>
+									<li class="active">Consultar Ticket</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+			</header>
+			<div class="box-typical box-typical-padding">
+				<p>
+					En esta sección podrá consultar los requerimientos de soporte TI que ha registrado.
+					Por favor, haga clic en el botón "Ver" para revisar los detalles de cada solicitud.
+				</p>
+				<h5 class="m-t-lg with-border">Listado de Requerimientos</h5>
+						<table id="ticket_data" class="table table-bordered table-striped table-vcenter js-dataTable-full">
+							<thead>
+								<tr>
+									<th class="text-center" style="width: 5%;">Nro. Ticket</th>
+									<th class="text-center" style="width: 15%;">Categoría</th>
+									<th class="text-center" style="width: 25%;">Título</th>
+									<th class="text-center" style="width: 10%;">Estado</th>
+									<th class="text-center" style="width: 15%;">Fecha de Creación</th>
+									<th class="text-center" style="width: 5%;">Ver</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</div>
+				</div>
+		</div>
+	</div>
+    <!-- Contenido de la página de consulta de tickets -->
+
+	<?php require_once("../MainJs/js.php");?>
+	<script type="text/javascript" src="consultarticket.js"></script>   
+</body>
+</html>
+<?php
+	} else {
+		header('Location: ' . \Conectar::ruta() . "index.php"); // Redirige al inicio si ya está logueado
+		exit();
+	}
+?>
